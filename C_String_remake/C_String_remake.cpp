@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "Class.h"
+#define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
 int main()

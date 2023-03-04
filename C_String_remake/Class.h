@@ -14,8 +14,17 @@ public:
 		length = 0;
 	}
 
-	String(const String& other) :str(other.str), length(other.length)
+	String(const String& other) : length(other.length)
 	{
+		if (other.str)
+		{
+			str = new char[length + 1];
+			std::strcpy(str, other.str);
+		}
+		else
+		{
+			str = nullptr;
+		}
 	}
 
 	String(const char* str)
@@ -37,19 +46,6 @@ public:
 	{
 		delete[] this->str;
 	}
-
-	/*String(const String& other)
-	{
-		length = strlen(other.str);
-		this->str = new char[length + 1];
-
-		for (int i = 0; i < length; i++)
-		{
-			this->str[i] = other.str[i];
-		}
-
-		this->str[length] = '\0';
-	}*/
 
 	String& operator =(const String& other)
 	{
@@ -101,7 +97,7 @@ public:
 
 	void Print()
 	{
-		cout << str;
+		std::cout << str;
 	}
 
 	int Length()
@@ -149,7 +145,7 @@ public:
 	const int ToInt()
 	{
 		int len = strlen(this->str);
-		cout << len;
+		std::cout << len;
 		return len;
 	}
 
@@ -193,7 +189,7 @@ public:
 
 		for (int i = 0; i < len; i++)
 		{
-			cout << this->str[i];
+			std::cout << this->str[i];
 		}
 	}
 };
